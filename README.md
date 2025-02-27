@@ -1,4 +1,4 @@
-# Project Name
+# Project MERN
 
 ## 📌 Deskripsi
 
@@ -16,3 +16,8 @@ Proyek ini adalah aplikasi **CRUD** yang dibangun menggunakan **MERN Stack** (**
 ## 👨‍💻 Kontributor
 
 - [Johan](https://github.com/jcodeteam)
+
+
+## 📜 Lisensi
+
+Proyek ini dilisensikan di bawah **[MIT License](https://opensource.org/licenses/MIT)**.
