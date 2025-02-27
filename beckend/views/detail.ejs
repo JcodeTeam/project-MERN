@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detail Produk</title>
+  </head>
+  <body>
+    <h1>Detail Produk</h1>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Harga</th>
+          <th>Stok</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= produk.nama %></td>
+          <td>Rp <%= produk.harga %></td>
+          <td><%= produk.stok %></td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
