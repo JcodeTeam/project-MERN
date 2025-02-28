@@ -9,5 +9,7 @@ const productSchema = new mongoose.Schema({
 
 // Buat model berdasarkan schema
 const Product = mongoose.model("Product", productSchema);
+// mongoose.model("Product", productSchema) membuat model bernama "Product", 
+// yang akan otomatis dikaitkan dengan koleksi "products" di MongoDB(Mongoose otomatis mengubahnya menjadi bentuk jamak).
 
 module.exports = Product;
