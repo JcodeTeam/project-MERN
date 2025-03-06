@@ -18,37 +18,43 @@
             </tr>
           </thead>
           <tbody>
-            <% if (produk.length <1) { %>
-              <div class="alert alert-danger">
-
-                <p>DATA PRODUK KOSONG</p>
+            <% if (msg.length !==0) { %>
+              <div class="alert alert-success mt-0" role="alert">
+                <%= msg %>
               </div>
               <% } %>
-                <% produk.forEach(p=> { %>
-                  <tr>
-                    <img src="./assets/test.jpg" alt="aaa">
-                    <td>
-                      <%= p.nama %>
-                    </td>
-                    <td>Rp <%= p.harga.toLocaleString() %>
-                    </td>
-                    <td>
-                      <%= p.stok %> pcs
-                    </td>
-                    <td class="text-center">
-                      <a href="/produk/<%= p._id %>" class="btn btn-info btn-sm"><i class="fas fa-eye"></i> Detail</a>
-                      <a href="/produk/edit/<%= p._id %>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>
-                        Edit</a>
+              
+                <% if (produk.length <1) { %>
+                  <div class="alert alert-danger">
+                    <p>DATA PRODUK KOSONG</p>
+                  </div>
+                  <% } %>
+                    <% produk.forEach(p=> { %>
+                      <tr>
+                        <img src="./assets/test.jpg" alt="aaa">
+                        <td>
+                          <%= p.nama %>
+                        </td>
+                        <td>Rp <%= p.harga.toLocaleString() %>
+                        </td>
+                        <td>
+                          <%= p.stok %> pcs
+                        </td>
+                        <td class="text-center">
+                          <a href="/produk/<%= p._id %>" class="btn btn-info btn-sm"><i class="fas fa-eye"></i>
+                            Detail</a>
+                          <a href="/produk/edit/<%= p._id %>" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>
+                            Edit</a>
 
-                      <form action="/produk/<%= p._id %>?_method=DELETE" method="POST" class="d-inline">
-                        <button type="submit" class="btn btn-danger btn-sm"
-                          onclick="return confirm('Yakin ingin menghapus produk ini?')">
-                          <i class="fas fa-trash-alt"></i> Hapus
-                        </button>
-                      </form>
-                    </td>
-                  </tr>
-                  <% }) %>
+                          <form action="/produk/<%= p._id %>?_method=DELETE" method="POST" class="d-inline">
+                            <button type="submit" class="btn btn-danger btn-sm"
+                              onclick="return confirm('Yakin ingin menghapus produk ini?')">
+                              <i class="fas fa-trash-alt"></i> Hapus
+                            </button>
+                          </form>
+                        </td>
+                      </tr>
+                      <% }) %>
           </tbody>
         </table>
       </div>

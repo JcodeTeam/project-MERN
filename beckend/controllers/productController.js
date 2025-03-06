@@ -3,15 +3,15 @@ const Product = require("../models/productModel");
 exports.index = async (req, res) => {
   try {
     const produk = await Product.find();
-    res.render("produk", { layout: 'layouts/app.ejs', produk }); // Render tampilan EJS
-    // res.status(200).json(products); // Jika Menggunakan API
+    // res.render("produk", { layout: 'layouts/app.ejs', produk, msg: req.flash('msg') }); // Render tampilan EJS
+    res.status(200).json(produk); // Jika Menggunakan API
   } catch (err) {
     res.status(500).json({ error: "Terjadi kesalahan", details: err });
   }
 };
 
 exports.create = (req, res) => {
-  res.render("tambah", { layout: 'layouts/app.ejs' }); // Render form tambah produk
+  res.render("tambah", { layout: 'layouts/app.ejs' }); 
 };
 
 exports.store = async (req, res) => {
@@ -24,8 +24,9 @@ exports.store = async (req, res) => {
     const produkBaru = new Product({nama, harga, stok});
     await produkBaru.save();
 
-    res.redirect("/produk"); // Redirect ke halaman produk setelah tambah
-    // res.status(201).json({message: "Produk berhasil ditambahkan"}); // Menggunakan API
+    req.flash('msg', 'Produk berhasil ditambahkan!');
+    // res.redirect("/produk"); 
+    res.status(201).json({message: "Produk berhasil ditambahkan"}); 
   } catch (err) {
     res.status(500).json({ error: "Terjadi kesalahan", details: err });
   }
@@ -39,7 +40,8 @@ exports.show = async (req, res) => {
     if (!produk)
       return res.status(404).json({ error: "Produk tidak ditemukan" });
 
-    res.render("detail", { layout: 'layouts/app.ejs', produk }); // Render tampilan detail produk
+    // res.render("detail", { layout: 'layouts/app.ejs', produk }); 
+    res.status(201).json({ produk }); 
   } catch (err) {
     res.status(500).json({ error: "Terjadi kesalahan", details: err });
   }
@@ -53,7 +55,7 @@ exports.edit = async (req, res) => {
     if (!produk)
       return res.status(404).json({ error: "Produk tidak ditemukan" });
 
-    res.render("edit", { layout: 'layouts/app.ejs', produk }); // Render form edit
+    res.render("edit", { layout: 'layouts/app.ejs', produk }); 
   } catch (err) {
     res.status(500).json({ error: "Terjadi kesalahan", details: err });
   }
@@ -70,8 +72,9 @@ exports.update = async (req, res) => {
       return res.status(404).json({ error: "Produk tidak ditemukan" });
     }
 
-    res.redirect("/produk"); // Redirect setelah update
-    // res.status(201).json({ message: "Produk berhasil diperbaharui" }); // Menggunakan API
+    req.flash('msg', 'Produk berhasil diubah!');
+    // res.redirect("/produk"); 
+    res.status(201).json({ message: "Produk berhasil diperbaharui" }); 
   } catch (err) {
     res.status(500).json({ error: "Terjadi kesalahan", details: err });
   }
@@ -87,8 +90,9 @@ exports.destroy = async (req, res) => {
       return res.status(404).json({ error: "Produk tidak ditemukan" });
     }
 
-    res.redirect("/produk"); // Redirect setelah hapus
-    // res.status(201).json({ message: "Produk berhasil dihapus" }); // Menggunakan API
+    req.flash('msg', 'Proudk berhasil dihapus!');
+    // res.redirect("/produk"); 
+    res.status(201).json({ message: "Produk berhasil dihapus" }); 
   } catch (err) {
     res.status(500).json({ error: "Terjadi kesalahan", details: err });
   }
