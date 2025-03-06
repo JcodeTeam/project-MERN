@@ -1,7 +1,5 @@
 require('dotenv').config();
 const express = require('express');
-const expressLayouts = require('express-ejs-layouts');
-const cors = require('cors');
 const productRoutes = require('./routes/productRoutes');
 const connectDB = require("./config/db");
 const Middleware = require('./middleware/middleware');
