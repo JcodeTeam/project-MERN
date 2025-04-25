@@ -10,10 +10,6 @@ exports.index = async (req, res) => {
     }
 };
 
-exports.create = (req, res) => {
-    res.render("tambah", { layout: 'layouts/app.ejs' });
-};
-
 exports.store = async (req, res) => {
     try {
         const { nama, harga, stok } = req.body;
@@ -42,20 +38,6 @@ exports.show = async (req, res) => {
 
         // res.render("detail", { layout: 'layouts/app.ejs', produk }); 
         res.status(201).json({ produk });
-    } catch (err) {
-        res.status(500).json({ error: "Terjadi kesalahan", details: err });
-    }
-};
-
-exports.edit = async (req, res) => {
-    try {
-        const { id } = req.params;
-        const produk = await Product.findById(id);
-
-        if (!produk)
-            return res.status(404).json({ error: "Produk tidak ditemukan" });
-
-        res.render("edit", { layout: 'layouts/app.ejs', produk });
     } catch (err) {
         res.status(500).json({ error: "Terjadi kesalahan", details: err });
     }
